@@ -1,6 +1,6 @@
 <?php
+$dbconn= pg_connect("host=localhost dbname=habit_app");
 
-$dbconn = pg_connect(getenv("DATABASE_URL"));
 
 class Habit {
   public $id;
@@ -61,7 +61,6 @@ class Habits {
   }
 
   static function update($updated_habit){
-    echo "inside update";
       $query = "UPDATE habits SET title = $1, description = $2, daysOfWeek = $3, timing=$4, completed=$5, comments=$6 WHERE id = $7";
       $query_params = array(
         $updated_habit->title,
