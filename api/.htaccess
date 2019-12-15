@@ -1,0 +1,13 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_METHOD} ^GET$
+RewriteRule ^habits$ controllers/habits.php?action=INDEX
+
+RewriteCond %{REQUEST_METHOD} ^POST$
+RewriteRule ^habits$ controllers/habits.php?action=POST
+
+RewriteCond %{REQUEST_METHOD} ^PUT$
+RewriteRule ^habits/([0-9]+)$ controllers/habits.php?action=UPDATE&id=$1
+
+RewriteCond %{REQUEST_METHOD} ^DELETE$
+RewriteRule ^habits/([0-9]+)$ controllers/habits.php?action=DELETE&id=$1
