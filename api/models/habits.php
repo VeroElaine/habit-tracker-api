@@ -1,5 +1,6 @@
 <?php
 $dbconn = pg_connect("host=localhost dbname=habit_app");
+ 
 
 class Habit {
   public $id;
