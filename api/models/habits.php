@@ -1,6 +1,6 @@
 <?php
-$dbconn = pg_connect("host=localhost dbname=habit_app");
- 
+
+$dbconn = pg_connect(getenv("DATABASE_URL"));
 
 class Habit {
   public $id;
