@@ -11,7 +11,7 @@ elseif ($_REQUEST['action'] === 'POST') {
   $body_object = json_decode($request_body);
   $new_habit = new Habit(
                   null,
-                  $body_object->title,
+                  $body_object->habit,
                   $body_object->description,
                   $body_object->daysOfWeek,
                   $body_object->timing,
@@ -25,7 +25,7 @@ else if ($_REQUEST['action'] === 'UPDATE'){
   $request_body = file_get_contents('php://input');
   $body_object = json_decode($request_body);
   $updated_habit = new Habit($_REQUEST['id'],
-                              $body_object->title,
+                              $body_object->habit,
                               $body_object->description,
                               $body_object->daysOfWeek,
                               $body_object->timing,

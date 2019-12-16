@@ -4,16 +4,16 @@ $dbconn = pg_connect(getenv("DATABASE_URL"));
 
 class Habit {
   public $id;
-  public $title;
+  public $habit;
   public $description;
   public $daysOfWeek;
   public $timing;
   public $completed;
   public $comments;
 
-  public function __construct($id, $title, $description, $daysOfWeek,$timing,$completed,$comments){
+  public function __construct($id, $habit, $description, $daysOfWeek,$timing,$completed,$comments){
     $this->id = $id;
-    $this->title = $title;
+    $this->habit = $habit;
     $this->description = $description;
     $this->daysOfWeek = $daysOfWeek;
     $this->timing = $timing;
@@ -33,7 +33,7 @@ class Habits {
     while($row_object){
       $new_habit = new Habit(
         intval($row_object->id),
-        $row_object->title,
+        $row_object->habit,
         $row_object->description,
         $row_object->daysofweek,
         $row_object->timing ,
@@ -47,9 +47,9 @@ class Habits {
   }
 
   static function create($habit){
-    $query = "INSERT INTO habits (title, description, daysOfWeek,timing,completed,comments) VALUES ($1, $2, $3,$4,$5,$6)";
+    $query = "INSERT INTO habits (habit, description, daysOfWeek,timing,completed,comments) VALUES ($1, $2, $3,$4,$5,$6)";
     $query_params = array(
-    $habit->title,
+    $habit->habit,
     $habit->description ,
     $habit->daysOfWeek,
     $habit->timing,
@@ -61,9 +61,9 @@ class Habits {
   }
 
   static function update($updated_habit){
-      $query = "UPDATE habits SET title = $1, description = $2, daysOfWeek = $3, timing=$4, completed=$5, comments=$6 WHERE id = $7";
+      $query = "UPDATE habits SET habit = $1, description = $2, daysOfWeek = $3, timing=$4, completed=$5, comments=$6 WHERE id = $7";
       $query_params = array(
-        $updated_habit->title,
+        $updated_habit->habit,
         $updated_habit->description ,
         $updated_habit->daysOfWeek,
         $updated_habit->timing,
