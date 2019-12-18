@@ -47,7 +47,7 @@ class Habits {
   static function all(){
     $habits = array();
 
-    $results = pg_query("SELECT * FROM habits");
+    $results = pg_query("SELECT * FROM habits ORDER BY habit");
 
     $row_object = pg_fetch_object($results);
     while($row_object){
